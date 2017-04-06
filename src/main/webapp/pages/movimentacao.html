@@ -54,30 +54,30 @@
                 <th>ID</th>
                 <th>Conta</th>
                 <th>Cliente</th>
-                <th>Valor</th>
                 <th>Tipo Movimentacão</th>
+                <th>Valor</th>                
                 <th>Valor Taxa</th>
-                <th>Saldo Atual</th>
                 <th>Saldo Anterior</th>
+                <th>Saldo Atual</th>                
                 <th>Conta Favorecida</th>
                 <th>Cliente Favorecido</th>
-                <th>Saldo Atual Favorecido</th>
                 <th>Saldo Anterior Favorecido</th>
+                <th>Saldo Atual Favorecido</th>                
                 <th>Data</th>
             </tr>
             <tr data-ng-repeat="movimentacao in controller.movimentacoes">
                 <td>{{movimentacao.id}}</td>
                 <td>{{movimentacao.contaCorrente.id}}</td>
-                <td>{{movimentacao.contaCorrente.cliente.nome}}</td>
-                <td>{{movimentacao.valor}}</td>
+                <td>{{movimentacao.contaCorrente.cliente.nome}}</td>                
                 <td>{{movimentacao.tipoMovimentacao}}</td>
+                <td>{{movimentacao.valor}}</td>
                 <td>{{movimentacao.valorTaxa}}</td>
-                <td>{{movimentacao.saldoAtual}}</td>
-                <td>{{movimentacao.saldoAnterior}}</td>                
+                <td>{{movimentacao.saldoAnterior}}</td> 
+                <td>{{movimentacao.saldoAtual}}</td>                               
                 <td>{{movimentacao.contaCorrenteFavorecido.id}}</td>
                 <td>{{movimentacao.contaCorrenteFavorecido.cliente.nome}}</td>
-                <td>{{movimentacao.saldoAtualFavorecido}}</td>
                 <td>{{movimentacao.saldoAnteriorFavorecido}}</td>
+                <td>{{movimentacao.saldoAtualFavorecido}}</td>                
                 <td>{{movimentacao.data}}</td>
             </tr>
         </table>

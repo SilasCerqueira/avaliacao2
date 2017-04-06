@@ -97,6 +97,7 @@ scotchApp.controller("clienteController", function ($scope, $http, urlBase) {
 
     self.ocorreuErro = function (mensagem) {
         alert(mensagem);
+        console.log(mensagem);
     };
 
     self.atualizarTabela = function () {
@@ -277,7 +278,10 @@ scotchApp.controller('movimentacaoController', function($scope, $http, urlBase) 
                 url: urlBase + 'movimentacoes/',
                 data: self.movimentacao
             }).then(function successCallback(response) {
-                self.atualizarTabela();
+            	if(response.data == "")
+            		self.atualizarTabela();
+            	else
+            		self.ocorreuErro(response.data);
             }, function errorCallback(response) {
                 self.ocorreuErro(response);
             });

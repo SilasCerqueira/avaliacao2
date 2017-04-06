@@ -63,7 +63,7 @@ public class HistoricoMovimentacaoController extends Generic {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/")
-    public Response create(HistoricoMovimentacao historicoMovimentacao) {
+    public String create(HistoricoMovimentacao historicoMovimentacao) {
         try { 
         	  HistoricoMovimentacaoBus historicoMovimentacaoBus = new HistoricoMovimentacaoBus();
         	  ContaBus contaBus = new ContaBus();
@@ -104,15 +104,14 @@ public class HistoricoMovimentacaoController extends Generic {
         		  else{
         			  contaBus.alterar(contaCorrente);
         			  contaBus.alterar(contaCorrenteFavorecido);
-        		  }
-        		  
+        		  }        		  
         	  }
         	  historicoMovimentacao.setData(new Date());        	 
         	  if(mensagem == ""){
         		  historicoMovimentacaoBus.inserir(historicoMovimentacao);
-              	  return Response.status(Response.Status.OK).build();
+              	  return "OK";
         	  }else{
-        		  throw new WebApplicationException("Saldo insuficiente");
+        		  return mensagem;
         	  }              		
         } catch (Exception ex) {
             Logger.getLogger(HistoricoMovimentacaoController.class.getName()).log(Level.SEVERE, null, ex);
