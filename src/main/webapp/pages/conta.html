@@ -1,0 +1,59 @@
+<div data-ng-controller="contaController as controller">
+    <div class="jumbotron text-center">
+        <h3>Conta</h3>
+    </div>
+
+    <div class="container" style="border: 1px solid black;" data-ng-show="controller.conta">
+
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="contaId">ID: </label>
+            <div class="col-10">
+                <input class="form-control" type="number" id="contaId" data-ng-model="controller.conta.id" disabled>
+            </div>
+        </div>
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="clienteId">CLIENTE: </label>
+            <select ng-model="controller.conta.cliente.id">
+                 <option id="clienteId" ng-repeat="x in controller.cars"  value="{{x.id}}">{{x.nome}}</option>
+            </select>
+        </div>
+
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="saldo">SALDO: </label>
+            <div class="col-10">
+                <input class="form-control" type="number"  id="saldo" data-ng-model="controller.conta.saldo">
+            </div>
+            <h5>Cliente: {{controller.conta.cliente.nome}}</h5>
+        </div>
+
+        <div class="form-group" >
+            <button class="form-control" type="button" data-ng-click="controller.salvar()">Salvar</button>
+        </div>
+        <div class="form-group" >
+            <button class="form-control" type="button" data-ng-click="controller.conta = undefined">Cancelar</button>
+        </div>
+
+    </div>
+
+    <div class="container" style="border: 1px solid black;" data-ng-show="!controller.conta">
+        <button type="button" data-ng-click="controller.novo()">Nova Conta</button><br>
+        <br>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Saldo</th>
+                <th>Opções</th>
+            </tr>
+            <tr data-ng-repeat="conta in controller.contas">
+                <td>{{conta.id}}</td>
+                <td>{{conta.cliente.nome}}</td>
+                <td>{{conta.saldo}}</td>
+                <td>
+                    <button type="button" data-ng-click="controller.alterar(conta)">Alterar</button>
+                    <button type="button" data-ng-click="controller.deletar(conta)">Excluir</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

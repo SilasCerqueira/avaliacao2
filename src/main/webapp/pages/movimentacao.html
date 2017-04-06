@@ -1,0 +1,81 @@
+<div data-ng-controller="movimentacaoController as controller">
+    <div class="jumbotron text-center">
+        <h3>Movimentação</h3>
+    </div>
+    <div class="container" style="border: 1px solid black;" data-ng-show="controller.movimentacao">
+
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="movimentacaoId">ID: </label>
+            <div class="col-10">
+                <input class="form-control" type="number" id="movimentacaoId" data-ng-model="controller.movimentacao.id" disabled>
+            </div>
+        </div>
+
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="contaId">Conta: </label>
+            <select ng-model="controller.movimentacao.contaCorrente.id">
+                <option id="contaId" ng-repeat="x in controller.contas"  value="{{x.id}}">{{x.id}}</option>
+            </select>
+        </div>
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="tipoMovimentacao">Tipo Movimentação: </label>
+            <select ng-model="controller.movimentacao.tipoMovimentacao">
+                <option id="tipoMovimentacao" ng-repeat="x in controller.tipoMovimentacoes"  value="{{x.value}}">{{x.descricao}}</option>
+            </select>
+        </div>
+
+        <div class="form-group"  data-ng-show="controller.movimentacao.tipoMovimentacao ==  0" >
+            <label class="col-2 col-form-label" for="contaCorrenteFavorecido">Conta Favorecido: </label>
+            <select ng-model="controller.movimentacao.contaCorrenteFavorecido.id">
+                <option id="contaCorrenteFavorecido" ng-repeat="x in controller.contas"  value="{{x.id}}">{{x.id}}</option>
+            </select>
+        </div>
+
+        <div class="form-group " >
+            <label class="col-2 col-form-label" for="valor">Valor: </label>
+            <div class="col-10">
+                <input class="form-control" type="number" step="0.01"  id="valor" data-ng-model="controller.movimentacao.valor">
+            </div>
+        </div>
+
+        <div class="form-group" >
+            <button type="button" data-ng-click="controller.salvar()">Salvar</button>
+        </div>
+        <div class="form-group" >
+            <button type="button" data-ng-click="controller.movimentacao = undefined">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="container" style="border: 1px solid black;" data-ng-show="!controller.movimentacao">
+        <button type="button" data-ng-click="controller.novo()">Nova Movimentação</button><br>
+        <br>
+        <table border="1" class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Conta</th>
+                <th>Cliente</th>
+                <th>Valor</th>
+                <th>Tipo Movimentacão</th>
+                <th>Valor Taxa</th>
+                <th>Saldo Atual</th>
+                <th>Saldo Anterior</th>
+                <th>Saldo Atual Favorecido</th>
+                <th>Saldo Anterior Favorecido</th>
+                <th>Data</th>
+            </tr>
+            <tr data-ng-repeat="movimentacao in controller.movimentacoes">
+                <td>{{movimentacao.id}}</td>
+                <td>{{movimentacao.contaCorrente.id}}</td>
+                <td>{{movimentacao.contaCorrente.cliente.nome}}</td>
+                <td>{{movimentacao.valor}}</td>
+                <td>{{movimentacao.tipoMovimentacao}}</td>
+                <td>{{movimentacao.valorTaxa}}</td>
+                <td>{{movimentacao.saldoAtual}}</td>
+                <td>{{movimentacao.saldoAnterior}}</td>
+                <td>{{movimentacao.saldoAtualFavorecido}}</td>
+                <td>{{movimentacao.saldoAnteriorFavorecido}}</td>
+                <td>{{movimentacao.data}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
