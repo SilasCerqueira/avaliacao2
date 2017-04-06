@@ -22,17 +22,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.avaliacao.dominio.DmTipoMovimentacao;
-import br.com.avaliacao.entity.Cliente;
 import br.com.avaliacao.entity.ContaCorrente;
 import br.com.avaliacao.entity.HistoricoMovimentacao;
-import br.com.avaliacao.infra.Generic;
-import br.com.avaliacao.service.ClienteBus;
 import br.com.avaliacao.service.ContaBus;
 import br.com.avaliacao.service.HistoricoMovimentacaoBus;
 
 
 @Path("movimentacoes")
-public class HistoricoMovimentacaoController extends Generic {
+public class HistoricoMovimentacaoController {
 
 	@GET
     @Produces(MediaType.APPLICATION_JSON)

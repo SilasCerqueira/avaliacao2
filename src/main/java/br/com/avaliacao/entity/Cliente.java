@@ -1,6 +1,5 @@
 package br.com.avaliacao.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table
-public class Cliente implements Serializable {
+public class Cliente {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

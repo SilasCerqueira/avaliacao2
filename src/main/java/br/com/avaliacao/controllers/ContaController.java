@@ -22,12 +22,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.avaliacao.entity.ContaCorrente;
-import br.com.avaliacao.infra.Generic;
 import br.com.avaliacao.service.ContaBus;
 
 
 @Path("contas")
-public class ContaController extends Generic {
+public class ContaController {
 
 	@GET
     @Produces(MediaType.APPLICATION_JSON)

@@ -22,12 +22,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.avaliacao.entity.Cliente;
-import br.com.avaliacao.infra.Generic;
 import br.com.avaliacao.service.ClienteBus;
 
 
 @Path("clientes")
-public class ClienteController extends Generic {
+public class ClienteController {
 
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
