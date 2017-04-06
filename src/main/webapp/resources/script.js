@@ -44,10 +44,10 @@ scotchApp.controller("clienteController", function ($scope, $http, urlBase) {
             self.ocorreuErro("Por favor preencha o nome!")
             return false;
         }else if(cliente.email == undefined){
-            self.ocorreuErro("Por favor preencha o email!")
+            self.ocorreuErro("Por favor preencha com um email valido!")
             return false;
         }else if(cliente.cpf == undefined){
-            self.ocorreuErro("Por favor preencha o cpf!")
+            self.ocorreuErro("Por favor preencha com um cpf valido!")
             return false;
         }else if(cliente.dataDeNascimento == undefined){
             self.ocorreuErro("Por favor preencha o data de nascimento!")

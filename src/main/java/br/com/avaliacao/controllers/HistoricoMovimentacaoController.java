@@ -91,11 +91,12 @@ public class HistoricoMovimentacaoController extends Generic {
         	  }else if(historicoMovimentacao.getTipoMovimentacao() == DmTipoMovimentacao.TRANSFERENCIA.getValor()){
          		  //favorecido
         		  ContaCorrente contaCorrenteFavorecido = contaBus.selecionar(historicoMovimentacao.getContaCorrenteFavorecido().getId());
+        		  historicoMovimentacao.setValorTaxa(BigDecimal.valueOf(DmTipoMovimentacao.TRANSFERENCIA.getTarifa()));
         		  historicoMovimentacao.setSaldoAtualFavorecido(contaCorrenteFavorecido.getSaldo().add(historicoMovimentacao.getValor()));
         		  historicoMovimentacao.setSaldoAnteriorFavorecido(contaCorrenteFavorecido.getSaldo());
         		  contaCorrenteFavorecido.setSaldo(historicoMovimentacao.getSaldoAtualFavorecido());
         		  //principal
-        		  historicoMovimentacao.setSaldoAtual(contaCorrente.getSaldo().subtract(historicoMovimentacao.getValor()));
+        		  historicoMovimentacao.setSaldoAtual(contaCorrente.getSaldo().subtract(historicoMovimentacao.getValor()).subtract(historicoMovimentacao.getValorTaxa()));
         		  historicoMovimentacao.setSaldoAnterior(contaCorrente.getSaldo());
         		  contaCorrente.setSaldo(historicoMovimentacao.getSaldoAtual());
         		  if(contaCorrente.getSaldo().compareTo(new BigDecimal("-200")) < 0)     
